@@ -1,12 +1,40 @@
+body {
+  padding-left: 10rem;
+  font-family: 'Adobe Clean UX', sans-serif;
+  background-color: #1D2C45;
+}
+
+.btn:hover, .btn:focus-visible, .show:active {
+  color: #1D2C45 !important;
+}
+
+.btn-secondary {
+  color: #1D2C45 !important;
+}
+
+.btn {
+  height: 50px !important;
+  width: 167px;
+  border-radius: 24px;
+  font-weight: 800 !important;
+  font-size: 17px;
+  color: #1D2C45;
+  background-color: #AAAABE !important;
+}
+
 .dropdown-menu {
-  border-radius: 12px;
+  border-radius: 24px;
   padding: 0;
-  /* opacity: 0; */
+  position: relative;
 }
 
 .dropdown-item {
   color: #1D2C45;
   background-color: #AAAABE;
+  width: 256px;
+  padding: 25px;
+  font-size: 17px;
+  font-weight: 700 !important;
 }
 
 .dropdown-item:focus, .dropdown-item:hover  {
@@ -16,11 +44,11 @@
 ul li:last-child .dropdown-item {
   /* Propriedade que deseja aplicar apenas ao último item */
   /* Por exemplo, alterar a cor do texto para vermelho */
-  border-radius: 0px 0px 12px 12px;
+  border-radius: 0px 0px 24px 24px;
 }
 
 ul li:first-child .dropdown-item {
   /* Propriedade que deseja aplicar apenas ao último item */
   /* Por exemplo, alterar a cor do texto para vermelho */
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 24px 24px 0px 0px;
 }
