@@ -1,3 +1,26 @@
-h1 {
-  text-decoration: underline;
+.dropdown-menu {
+  border-radius: 12px;
+  padding: 0;
+  /* opacity: 0; */
+}
+
+.dropdown-item {
+  color: #1D2C45;
+  background-color: #AAAABE;
+}
+
+.dropdown-item:focus, .dropdown-item:hover  {
+  background: #C4BED2
+}
+
+ul li:last-child .dropdown-item {
+  /* Propriedade que deseja aplicar apenas ao último item */
+  /* Por exemplo, alterar a cor do texto para vermelho */
+  border-radius: 0px 0px 12px 12px;
+}
+
+ul li:first-child .dropdown-item {
+  /* Propriedade que deseja aplicar apenas ao último item */
+  /* Por exemplo, alterar a cor do texto para vermelho */
+  border-radius: 12px 12px 0px 0px;
 }
