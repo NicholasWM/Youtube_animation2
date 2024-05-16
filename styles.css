@@ -4,7 +4,7 @@ body {
   background-color: #1D2C45;
 }
 
-.btn:hover, .btn:focus-visible, .show:active {
+.btn:hover, .btn:focus-visible, .show:active, .dropdown-item:active {
   color: #1D2C45 !important;
 }
 
@@ -37,7 +37,7 @@ body {
   font-weight: 700 !important;
 }
 
-.dropdown-item:focus, .dropdown-item:hover  {
+.dropdown-item:focus, .dropdown-item:hover {
   background: #C4BED2
 }
 
