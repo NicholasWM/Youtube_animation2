@@ -165,11 +165,9 @@
 
       setTimeout(() => {
         lottiePlayer._lottie.goToAndStop(0)
-        lottiePlayer.shadowRoot.querySelector('svg').style.position = 'relative'
 
         lottiePlayer.style.pointerEvents = 'none'
 
-        // subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever').querySelector('g').querySelector('path')
         subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
 
         addHover('boxInscrever', '#F2F3F7', '#AAAABE')

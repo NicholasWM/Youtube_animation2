@@ -67,7 +67,8 @@ ul li:first-child .dropdown-item {
 
 ul.dropdown-menu.show {
   position: absolute;
-  top: -60px !important
+  top: -30px !important;
+  left: 45px !important;
 }
 
 .customHover:hover{
