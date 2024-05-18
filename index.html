@@ -19,18 +19,22 @@
                 
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      svg{
+        width: '100%' !important;
+      }
+    </style>
   </head>
   <body>
-    <h2 style="color: white" id="currentState"></h2>
+    <h2 style="color: white; display: none" id="currentState"></h2>
             
-    <p style="color: white" id="frame">0</p>
-    <p style="color: white" id="stopValue">0</p>
+    <p style="color: white; display: none" id="frame">0</p>
+    <p style="color: white; display: none" id="stopValue">0</p>
       <lottie-player
         id="blueprint-lottie-5"
-        style="width: '100%'; border: black solid 1px;"
+        style="cursor: pointer; width: 250px;"
         src="https://raw.githubusercontent.com/NicholasWM/fundamental_block_3.0/master/public/InscritoYoutube.json"
         onclick="subscribeIfCurrentStateIsUnsubscribed()"
-        class="m-auto justify-content-center"
       >"></lottie-player>
 
     <ul class="dropdown-menu">
@@ -63,6 +67,15 @@
       const stopValueElement = document.getElementById('stopValue')
       const currentStateElement = document.getElementById('currentState')
 
+      let subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
+      let subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito')
+
+      // var sheet = new CSSStyleSheet
+      // sheet.replaceSync( `path { fill: pink }`)
+      // subscribeBtn.adoptedStyleSheets.push(sheet) 
+
+      // subscribeBtn.appendChild(style)
+
       currentStateElement.innerText = 'unsubscribed'
 
       const stopFrameMapper = {
@@ -72,6 +85,8 @@
         276: 'allNotifications',
         361: 'customNotifications',
       }
+
+      lottiePlayer.shadowRoot.getElementById('animation-container').style.width = '100%'
 
       function changeLottiePlayerOnClickBehavior() {
         if (currentStateElement.innerText === 'unsubscribed') {
@@ -99,29 +114,23 @@
 
         stopValueElement.innerText = lastFrame
         lottiePlayer._lottie.goToAndPlay(initialFrame, true)
-        // changeLottiePlayerOnClickBehavior()
       }
 
-      // Faltam
-      // inscrito -> inscritoTodas
-      // inscrito -> inscritoPersonalizado
-      // inscritoNenhuma -> inscritoPersonalizado
+      function subscribe() {
+        console.log('subscribe');
+        animate(22, 106)
 
-      // subscribed - unsubscribed
-      // subscribed - noNotifications
-      // subscribed - allNotifications
-      // subscribed - customNotifications
-
-      // unsubscribed - noNotifications
-      // unsubscribed - allNotifications
-      // unsubscribed - customNotifications
-
-      // noNotifications
-      // allNotifications
-      // customNotifications
-
-      function subscribe() {console.log('subscribe');animate(22, 106)}
-      function unsubscribe() {console.log('unsubscribe');animate(1, 21)}
+        subscribeBtn.style.pointerEvents = 'none'
+        subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito')
+        subscribedBtn.style.pointerEvents = 'auto'
+      }
+      function unsubscribe() {
+        console.log('unsubscribe');
+        animate(1, 21)
+        subscribedBtn.style.pointerEvents = 'none'
+        subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
+        subscribeBtn.style.pointerEvents = 'auto'
+      }
       function noNotifications() {console.log('noNotifications');animate(107, 191)}
       function allNotifications() {console.log('allNotifications');animate(192, 276)}
       function customNotifications() {console.log('customNotifications');animate(277, 361)}
@@ -138,7 +147,13 @@
 
       setTimeout(() => {
         lottiePlayer._lottie.goToAndStop(0)
-      }, 1000)
+        lottiePlayer.shadowRoot.querySelector('svg').style.position = 'relative'
+        lottiePlayer.shadowRoot.querySelector('svg').style.top = '-28px'
+        lottiePlayer.shadowRoot.querySelector('svg').style.left = '-45px'
+        lottiePlayer.style.pointerEvents = 'none'
+        subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
+        subscribeBtn.style.pointerEvents = 'auto'
+      }, 10)
   </script>
 
     <script
