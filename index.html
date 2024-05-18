@@ -123,13 +123,18 @@
         subscribeBtn.style.pointerEvents = 'none'
         subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito')
         subscribedBtn.style.pointerEvents = 'auto'
+
+        addHover('boxInscrito', '#AAAABE', '#D9D9E1')
       }
       function unsubscribe() {
         console.log('unsubscribe');
         animate(1, 21)
+
         subscribedBtn.style.pointerEvents = 'none'
         subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
         subscribeBtn.style.pointerEvents = 'auto'
+
+        addHover('boxInscrever', '#F2F3F7', '#AAAABE')
       }
       function noNotifications() {console.log('noNotifications');animate(107, 191)}
       function allNotifications() {console.log('allNotifications');animate(192, 276)}
@@ -145,15 +150,35 @@
         }
       });
 
+      function addHover(id, initialColor, onHoverColor) {
+        let targetElement = lottiePlayer.shadowRoot.getElementById(id)
+
+        targetElement.addEventListener('mouseover', () => {
+          targetElement = lottiePlayer.shadowRoot.getElementById(id).querySelector('g').querySelector('path')
+          targetElement.style.fill = onHoverColor
+        })
+        targetElement.addEventListener('mouseout', () => {
+          console.log('mouseout')
+          targetElement.style.fill = initialColor
+        })
+      }
+
       setTimeout(() => {
         lottiePlayer._lottie.goToAndStop(0)
         lottiePlayer.shadowRoot.querySelector('svg').style.position = 'relative'
         lottiePlayer.shadowRoot.querySelector('svg').style.top = '-28px'
         lottiePlayer.shadowRoot.querySelector('svg').style.left = '-45px'
+
         lottiePlayer.style.pointerEvents = 'none'
+
+        // subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever').querySelector('g').querySelector('path')
         subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
+
+        addHover('boxInscrever', '#F2F3F7', '#AAAABE')
+
         subscribeBtn.style.pointerEvents = 'auto'
-      }, 10)
+        
+      }, 100)
   </script>
 
     <script

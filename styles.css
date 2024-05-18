@@ -1,7 +1,7 @@
 body {
   font-family: 'Adobe Clean UX', sans-serif;
   background-color: gray;
-  /* background-color: #1D2C45; */
+  background-color: #1D2C45;
 }
 
 .btn:hover, .btn:focus-visible, .show:active, .dropdown-item:active {
@@ -68,4 +68,13 @@ ul li:first-child .dropdown-item {
 ul.dropdown-menu.show {
   position: absolute;
   top: -60px !important
+}
+
+.customHover:hover{
+  fill:red !important;
+}
+
+.boxInscrever:hover {
+  fill: red;
+  background-color: red;
 }
