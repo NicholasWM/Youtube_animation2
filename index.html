@@ -103,7 +103,6 @@
         }
       }
 
-
       function animate(initialFrame, lastFrame) {
         currentStateElement.innerText = Object.keys(stopFrameMapper).includes(String(lastFrame)) ? stopFrameMapper[lastFrame] : 'Not Mapped'
         if(initialFrame > lastFrame) {
@@ -117,6 +116,7 @@
       }
 
       function subscribe() {
+        if (currentStateElement.innerText === 'subscribe') return
         console.log('subscribe');
         animate(22, 106)
 
@@ -128,6 +128,8 @@
       }
 
       function unsubscribe() {
+        if (currentStateElement.innerText === 'unsubscribe') return
+
         console.log('unsubscribe');
         animate(1, 21)
 
@@ -140,9 +142,27 @@
         const dropdownUl = document.querySelector('ul').classList.remove('show')
 
       }
-      function noNotifications() {console.log('noNotifications');animate(107, 191)}
-      function allNotifications() {console.log('allNotifications');animate(192, 276)}
-      function customNotifications() {console.log('customNotifications');animate(277, 361)}
+
+      function noNotifications() {
+        if (currentStateElement.innerText === 'noNotifications') return
+
+        console.log('noNotifications');
+        animate(107, 191)
+      }
+
+      function allNotifications() {
+        if (currentStateElement.innerText === 'allNotifications') return
+
+        console.log('allNotifications');
+        animate(192, 276)
+      }
+
+      function customNotifications() {
+        if (currentStateElement.innerText === 'customNotifications') return
+
+        console.log('customNotifications');
+        animate(277, 361)
+      }
 
       lottiePlayer.addEventListener("frame", (e) => {
         const frame = Number(e.target._lottie.currentFrame.toFixed(0))
