@@ -16,9 +16,12 @@ function animate(initialFrame, lastFrame) {
   const hasSomeMappedAnimation = Object.keys(stopFrameMapper).includes(
     String(lastFrame)
   )
-  currentStateElement.innerText = hasSomeMappedAnimation
-    ? stopFrameMapper[lastFrame]
-    : 'Not Mapped';
+
+  if(hasSomeMappedAnimation) {
+    currentStateElement.innerText = stopFrameMapper[lastFrame]
+  } else {
+    console.log('OPERATION_NOT_MAPPED', lastFrame)
+  }
   
   const isReverse = initialFrame > lastFrame
   if (isReverse) {
