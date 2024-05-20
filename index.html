@@ -87,9 +87,10 @@
       }
 
       lottiePlayer.shadowRoot.getElementById('animation-container').style.width = '100%'
-
+      
       function changeLottiePlayerOnClickBehavior() {
         if (currentStateElement.innerText === 'unsubscribed') {
+          console.log('unset')
           lottiePlayer.setAttribute('data-bs-toggle', '')
         } else {
           lottiePlayer.setAttribute('data-bs-toggle', 'dropdown')
@@ -100,7 +101,6 @@
         if (currentStateElement.innerText === 'unsubscribed') {
           subscribe()
         }
-        changeLottiePlayerOnClickBehavior()
       }
 
 
@@ -123,9 +123,10 @@
         subscribeBtn.style.pointerEvents = 'none'
         subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito')
         subscribedBtn.style.pointerEvents = 'auto'
-
+        lottiePlayer.setAttribute('data-bs-toggle', 'dropdown')
         addHover('boxInscrito', '#AAAABE', '#D9D9E1')
       }
+
       function unsubscribe() {
         console.log('unsubscribe');
         animate(1, 21)
@@ -135,6 +136,9 @@
         subscribeBtn.style.pointerEvents = 'auto'
 
         addHover('boxInscrever', '#F2F3F7', '#AAAABE')
+        lottiePlayer.setAttribute('data-bs-toggle', '')
+        const dropdownUl = document.querySelector('ul').classList.remove('show')
+
       }
       function noNotifications() {console.log('noNotifications');animate(107, 191)}
       function allNotifications() {console.log('allNotifications');animate(192, 276)}
@@ -174,7 +178,7 @@
 
         subscribeBtn.style.pointerEvents = 'auto'
         
-      }, 100)
+      }, 400)
   </script>
 
     <script
