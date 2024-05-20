@@ -31,7 +31,7 @@
         style="cursor: pointer; width: 250px;"
         src="https://raw.githubusercontent.com/NicholasWM/fundamental_block_3.0/master/public/InscritoYoutube.json"
         onclick="subscribeIfCurrentStateIsUnsubscribed()"
-      >"></lottie-player>
+      ></lottie-player>
 
     <ul class="dropdown-menu">
       <li>
@@ -54,156 +54,25 @@
         Cancelar Inscrição
       </a></li>
     </ul>
+
     <script type="text/javascript" src="https://unpkg.com/lottie-interactive@latest/dist/lottie-interactive.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-interactivity@latest/dist/lottie-interactivity.min.js"></script>
-    <script type="text/javascript">
-      const lottiePlayer = document.getElementById('blueprint-lottie-5')
-      const frameElement = document.getElementById('frame')
-      const stopValueElement = document.getElementById('stopValue')
-      const currentStateElement = document.getElementById('currentState')
-
-      let subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
-      let subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito')
-
-      currentStateElement.innerText = 'unsubscribed'
-
-      const stopFrameMapper = {
-        106: 'subscribed',
-        21: 'unsubscribed',
-        191: 'noNotifications',
-        276: 'allNotifications',
-        361: 'customNotifications',
-      }
-
-      lottiePlayer.shadowRoot.getElementById('animation-container').style.width = '100%'
-      
-      function changeLottiePlayerOnClickBehavior() {
-        if (currentStateElement.innerText === 'unsubscribed') {
-          console.log('unset')
-          lottiePlayer.setAttribute('data-bs-toggle', '')
-        } else {
-          lottiePlayer.setAttribute('data-bs-toggle', 'dropdown')
-        }
-      }
-
-      function subscribeIfCurrentStateIsUnsubscribed() {
-        if (currentStateElement.innerText === 'unsubscribed') {
-          subscribe()
-        }
-      }
-
-      function animate(initialFrame, lastFrame) {
-        currentStateElement.innerText = Object.keys(stopFrameMapper).includes(String(lastFrame)) ? stopFrameMapper[lastFrame] : 'Not Mapped'
-        if(initialFrame > lastFrame) {
-          lottiePlayer._lottie.setDirection(-1)
-        } else {
-          lottiePlayer._lottie.setDirection(1)
-        }
-
-        stopValueElement.innerText = lastFrame
-        lottiePlayer._lottie.goToAndPlay(initialFrame, true)
-      }
-
-      function subscribe() {
-        if (currentStateElement.innerText === 'subscribe') return
-        console.log('subscribe');
-        animate(22, 106)
-
-        subscribeBtn.style.pointerEvents = 'none'
-        subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito')
-        subscribedBtn.style.pointerEvents = 'auto'
-        lottiePlayer.setAttribute('data-bs-toggle', 'dropdown')
-        addHover('boxInscrito', '#AAAABE', '#D9D9E1')
-      }
-
-      function unsubscribe() {
-        if (currentStateElement.innerText === 'unsubscribe') return
-
-        console.log('unsubscribe');
-        animate(1, 21)
-
-        subscribedBtn.style.pointerEvents = 'none'
-        subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
-        subscribeBtn.style.pointerEvents = 'auto'
-
-        addHover('boxInscrever', '#F2F3F7', '#AAAABE')
-        lottiePlayer.setAttribute('data-bs-toggle', '')
-        const dropdownUl = document.querySelector('ul').classList.remove('show')
-
-      }
-
-      function noNotifications() {
-        if (currentStateElement.innerText === 'noNotifications') return
-
-        console.log('noNotifications');
-        animate(107, 191)
-      }
-
-      function allNotifications() {
-        if (currentStateElement.innerText === 'allNotifications') return
-
-        console.log('allNotifications');
-        animate(192, 276)
-      }
-
-      function customNotifications() {
-        if (currentStateElement.innerText === 'customNotifications' || currentStateElement.innerText ===  'subscribed') return
-
-        console.log('customNotifications');
-        animate(277, 361)
-      }
-
-      lottiePlayer.addEventListener("frame", (e) => {
-        const frame = Number(e.target._lottie.currentFrame.toFixed(0))
-        
-        frameElement.innerText = frame
-        const lastFrame = Number(stopValueElement.innerText)
-        if(frame === lastFrame) {
-          lottiePlayer._lottie.goToAndStop(lastFrame, true)
-        }
-      });
-
-      function addHover(id, initialColor, onHoverColor) {
-        let targetElement = lottiePlayer.shadowRoot.getElementById(id)
-
-        targetElement.addEventListener('mouseover', () => {
-          targetElement = lottiePlayer.shadowRoot.getElementById(id).querySelector('g').querySelector('path')
-          targetElement.style.fill = onHoverColor
-        })
-        targetElement.addEventListener('mouseout', () => {
-          console.log('mouseout')
-          targetElement.style.fill = initialColor
-        })
-      }
-
-      setTimeout(() => {
-        lottiePlayer._lottie.goToAndStop(0)
-
-        lottiePlayer.style.pointerEvents = 'none'
-
-        subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever')
-
-        addHover('boxInscrever', '#F2F3F7', '#AAAABE')
-
-        subscribeBtn.style.pointerEvents = 'auto'
-        
-      }, 400)
-  </script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-    crossorigin="anonymous"
-  ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="./animation.js"></script>
   </body>
 </html>
