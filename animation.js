@@ -102,23 +102,19 @@ function addDropShadow(id) {
   targetElement.style.filter = 'drop-shadow(0px 9px 16px #121d2d)';
 }
 
-function addClickBackground() {
-  const id = 'boxInscrito'
-  const initialColor = 'red'
-  const onHoverColor = '#AAAABE'
+function addClickBackground(id, initialColor, onClickColor) {
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
   
-  targetElement.addEventListener('focusin', () => {
+  targetElement.addEventListener('mousedown', () => {
     console.log('Keydown')
     targetElement = lottiePlayer.shadowRoot
       .getElementById(id)
       .querySelector('g')
       .querySelector('path');
     
-    console.log(getEventListeners(targetElement));
-    targetElement.style.fill = onHoverColor;
+    targetElement.style.fill = onClickColor;
   });
-  targetElement.addEventListener('keyup', () => {
+  targetElement.addEventListener('mouseup', () => {
     console.log('KeyUp')
 
     targetElement.style.fill = initialColor;
@@ -128,6 +124,10 @@ function addClickBackground() {
 function addHover(id, initialColor, onHoverColor) {
   addDropShadow(id)
 
+  if(id === 'boxInscrito') {
+    addClickBackground(id, initialColor, '#fff')
+  }
+
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
 
   targetElement.addEventListener('mouseover', () => {
@@ -136,18 +136,10 @@ function addHover(id, initialColor, onHoverColor) {
       .querySelector('g')
       .querySelector('path');
     
-    // transitionColors(targetElement, initialColor, onHoverColor, 150);
-
-    // targetElement.style.transitionProperty = 'color'
-    targetElement.style.transition = 'fill 83ms cubic-bezier(0.33, 0.00, 0.67, 1.00);'
-    targetElement.style.fill = onHoverColor
-    
+    transitionColors(targetElement, initialColor, onHoverColor, 150);
   });
   targetElement.addEventListener('mouseout', () => {
-    console.log('mouseout');
-    targetElement.style.transition = 'fill 83ms cubic-bezier(0.33, 0.00, 0.67, 1.00);'
-    targetElement.style.fill = initialColor
-    // transitionColors(targetElement, onHoverColor, initialColor, 150);
+    transitionColors(targetElement, onHoverColor, initialColor, 150);
   });
 }
 const lottiePlayer = document.getElementById('blueprint-lottie-5');
@@ -241,5 +233,3 @@ const transitionColors = (element, start, end, duration) => {
       }
   }, interval);
 }
-
-// transitionColors(colorBox, startColor, endColor, duration);
