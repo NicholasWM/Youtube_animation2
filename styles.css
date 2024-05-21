@@ -71,11 +71,3 @@ ul.dropdown-menu.show {
   left: 45px !important;
 }
 
-.customHover:hover{
-  fill:red !important;
-}
-
-.boxInscrever:hover {
-  fill: red;
-  background-color: red;
-}
