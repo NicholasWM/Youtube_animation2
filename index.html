@@ -19,20 +19,20 @@
                 
     <title>Youtube Animation</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   </head>
   <body>
     <h2 style="color: white; display: none" id="currentState"></h2>
             
     <p style="color: white; display: none" id="frame">0</p>
     <p style="color: white; display: none" id="stopValue">0</p>
-      <lottie-player
-        id="blueprint-lottie-5"
-        style="cursor: pointer; width: 250px;"
-        src="https://raw.githubusercontent.com/NicholasWM/fundamental_block_3.0/master/public/InscritoYoutube.json"
-        onclick="subscribeIfCurrentStateIsUnsubscribed()"
-      ></lottie-player>
-
+    
+    <lottie-player
+      id="blueprint-lottie-5"
+      style="cursor: pointer; width: 250px;"
+      src="https://raw.githubusercontent.com/NicholasWM/fundamental_block_3.0/master/public/InscritoYoutube.json"
+      onclick="subscribeIfCurrentStateIsUnsubscribed()"
+    ></lottie-player>
+  
     <ul class="dropdown-menu">
       <li>
         <a onclick="allNotifications()" class="dropdown-item" href="#">
