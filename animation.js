@@ -47,7 +47,8 @@ function subscribe() {
 
   subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito');
   subscribedBtn.style.pointerEvents = 'auto';
-  
+  subscribedBtn.addEventListener('keydown', () => console.log('press'))
+  subscribedBtn.addEventListener('keyup', () => console.log('unpress'))
   lottiePlayer.setAttribute('data-bs-toggle', 'dropdown');
   addHover('boxInscrito', '#AAAABE', '#D9D9E1');
 }
@@ -91,6 +92,15 @@ function customNotifications() {
   animate(277, 361);
 }
 
+function addDropShadow() {
+  let targetElement = lottiePlayer.shadowRoot.getElementById(id);
+  targetElement = lottiePlayer.shadowRoot
+    .getElementById(id)
+    .querySelector('g')
+    .querySelector('path');
+    
+  targetElement.style.filter = 'drop-shadow(0px 9px 16px #00000040)';
+}
 
 function addHover(id, initialColor, onHoverColor) {
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
@@ -100,11 +110,16 @@ function addHover(id, initialColor, onHoverColor) {
       .getElementById(id)
       .querySelector('g')
       .querySelector('path');
-    targetElement.style.fill = onHoverColor;
+    
+    transitionColors(targetElement, initialColor, onHoverColor, 200);
+    
+    // targetElement.style.fill = onHoverColor;
   });
   targetElement.addEventListener('mouseout', () => {
     console.log('mouseout');
-    targetElement.style.fill = initialColor;
+    transitionColors(targetElement, onHoverColor, initialColor, 200);
+
+    // targetElement.style.fill = initialColor;
   });
 }
 const lottiePlayer = document.getElementById('blueprint-lottie-5');
@@ -144,8 +159,59 @@ setTimeout(() => {
   lottiePlayer.style.pointerEvents = 'none';
 
   subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever');
-
   addHover('boxInscrever', '#F2F3F7', '#AAAABE');
-
+  
   subscribeBtn.style.pointerEvents = 'auto';
+  addDropShadow()
 }, 400);
+
+
+
+
+// Function to convert hex color to RGB object
+const hexToRGB = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+  } : null;
+};
+
+const colorBox = document.getElementById('colorBox');
+const duration = 83; // Duration in milliseconds
+const startColor = '#F2F3F7';
+const endColor = '#AAAABE';
+
+// Function to transition colors
+const transitionColors = (element, start, end, duration) => {
+  const interval = 10; // Interval for color change
+  const steps = Math.ceil(duration / interval);
+  const startRGB = hexToRGB(start);
+  const endRGB = hexToRGB(end);
+  const deltaRGB = {
+      r: (endRGB.r - startRGB.r) / steps,
+      g: (endRGB.g - startRGB.g) / steps,
+      b: (endRGB.b - startRGB.b) / steps
+  };
+
+  let stepCount = 0;
+
+  const transitionInterval = setInterval(() => {
+      const newColor = {
+          r: Math.round(startRGB.r + deltaRGB.r * stepCount),
+          g: Math.round(startRGB.g + deltaRGB.g * stepCount),
+          b: Math.round(startRGB.b + deltaRGB.b * stepCount)
+      };
+
+      const color = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
+      element.style.fill = color;
+
+      stepCount++;
+      if (stepCount >= steps) {
+          clearInterval(transitionInterval);
+      }
+  }, interval);
+}
+
+// transitionColors(colorBox, startColor, endColor, duration);
