@@ -92,17 +92,42 @@ function customNotifications() {
   animate(277, 361);
 }
 
-function addDropShadow() {
+function addDropShadow(id) {
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
   targetElement = lottiePlayer.shadowRoot
     .getElementById(id)
     .querySelector('g')
     .querySelector('path');
     
-  targetElement.style.filter = 'drop-shadow(0px 9px 16px #00000040)';
+  targetElement.style.filter = 'drop-shadow(0px 9px 16px #121d2d)';
+}
+
+function addClickBackground() {
+  const id = 'boxInscrito'
+  const initialColor = 'red'
+  const onHoverColor = '#AAAABE'
+  let targetElement = lottiePlayer.shadowRoot.getElementById(id);
+  
+  targetElement.addEventListener('focusin', () => {
+    console.log('Keydown')
+    targetElement = lottiePlayer.shadowRoot
+      .getElementById(id)
+      .querySelector('g')
+      .querySelector('path');
+    
+    console.log(getEventListeners(targetElement));
+    targetElement.style.fill = onHoverColor;
+  });
+  targetElement.addEventListener('keyup', () => {
+    console.log('KeyUp')
+
+    targetElement.style.fill = initialColor;
+  });
 }
 
 function addHover(id, initialColor, onHoverColor) {
+  addDropShadow(id)
+
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
 
   targetElement.addEventListener('mouseover', () => {
@@ -111,15 +136,18 @@ function addHover(id, initialColor, onHoverColor) {
       .querySelector('g')
       .querySelector('path');
     
-    transitionColors(targetElement, initialColor, onHoverColor, 200);
+    // transitionColors(targetElement, initialColor, onHoverColor, 150);
+
+    // targetElement.style.transitionProperty = 'color'
+    targetElement.style.transition = 'fill 83ms cubic-bezier(0.33, 0.00, 0.67, 1.00);'
+    targetElement.style.fill = onHoverColor
     
-    // targetElement.style.fill = onHoverColor;
   });
   targetElement.addEventListener('mouseout', () => {
     console.log('mouseout');
-    transitionColors(targetElement, onHoverColor, initialColor, 200);
-
-    // targetElement.style.fill = initialColor;
+    targetElement.style.transition = 'fill 83ms cubic-bezier(0.33, 0.00, 0.67, 1.00);'
+    targetElement.style.fill = initialColor
+    // transitionColors(targetElement, onHoverColor, initialColor, 150);
   });
 }
 const lottiePlayer = document.getElementById('blueprint-lottie-5');
@@ -162,7 +190,7 @@ setTimeout(() => {
   addHover('boxInscrever', '#F2F3F7', '#AAAABE');
   
   subscribeBtn.style.pointerEvents = 'auto';
-  addDropShadow()
+  // addClickBackground()
 }, 400);
 
 
