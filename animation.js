@@ -112,12 +112,16 @@ function addClickBackground(id, initialColor, onClickColor) {
       .querySelector('g')
       .querySelector('path');
     
-    targetElement.style.fill = onClickColor;
+    // targetElement.style.fill = onClickColor;
+    transitionColors(targetElement, initialColor, onClickColor, 150);
+    
   });
   targetElement.addEventListener('mouseup', () => {
     console.log('KeyUp')
 
-    targetElement.style.fill = initialColor;
+    // targetElement.style.fill = initialColor;
+    transitionColors(targetElement, onClickColor, initialColor, 150);
+
   });
 }
 
@@ -125,7 +129,7 @@ function addHover(id, initialColor, onHoverColor) {
   addDropShadow(id)
 
   if(id === 'boxInscrito') {
-    addClickBackground(id, initialColor, '#fff')
+    addClickBackground(id, initialColor, '#FFFFFF')
   }
 
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
@@ -182,10 +186,7 @@ setTimeout(() => {
   addHover('boxInscrever', '#F2F3F7', '#AAAABE');
   
   subscribeBtn.style.pointerEvents = 'auto';
-  // addClickBackground()
 }, 400);
-
-
 
 
 // Function to convert hex color to RGB object
