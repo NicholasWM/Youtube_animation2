@@ -1,5 +1,4 @@
 class LottieAnimation {
-
   constructor() {
     this.ANIMATIONS = {
       SUBSCRIBED: 'subscribed',
