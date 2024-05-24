@@ -85,7 +85,7 @@ class LottieAnimation {
   
     this.subscribeBtn = this.lottiePlayer.shadowRoot.getElementById('boxInscrevaSe');
     this.subscribedBtn = this.lottiePlayer.shadowRoot.getElementById('boxInscrito');
-    console.log('unsubscribe');
+
     this.animate(1, 21);
   
     this.subscribedBtn.style.pointerEvents = 'none';
@@ -100,14 +100,12 @@ class LottieAnimation {
   noNotifications() {
     if (this.currentStateElement.innerText === this.ANIMATIONS.NO_NOTIFICATIONS) return;
   
-    console.log(this.ANIMATIONS.NO_NOTIFICATIONS);
     this.animate(176, 252);
   }
   
   allNotifications() {
     if (this.currentStateElement.innerText === this.ANIMATIONS.ALL_NOTIFICATIONS) return;
   
-    console.log(this.ANIMATIONS.ALL_NOTIFICATIONS);
     this.animate(99, 175);
   }
   
@@ -117,7 +115,6 @@ class LottieAnimation {
     
     if (isAllowedToChangeState) return
   
-    console.log(this.ANIMATIONS.CUSTOM_NOTIFICATIONS);
     this.animate(253, 329);
   }
   
@@ -134,8 +131,6 @@ class LottieAnimation {
   addClickBackground(id, initialColor, onClickColor) {
     let targetElement = this.lottiePlayer.shadowRoot.getElementById(id);
     
-    console.log('targetElement.onmousedown', )
-    console.log('targetElement.onmouseup', )
     targetElement.onmousedown = () => {
       if (this.dropdownElement.classList.contains('show')) {
         this.dropdownElement.classList.add('hidden')
