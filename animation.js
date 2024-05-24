@@ -41,7 +41,7 @@ function setStopFrame(frame) {
 function subscribe() {
   if (currentStateElement.innerText === 'subscribe') return;
   console.log('subscribe');
-  animate(22, 106);
+  animate(22, 98);
 
   subscribeBtn.style.pointerEvents = 'none';
 
@@ -60,10 +60,10 @@ function unsubscribe() {
   animate(1, 21);
 
   subscribedBtn.style.pointerEvents = 'none';
-  subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever');
+  subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrevaSe');
   subscribeBtn.style.pointerEvents = 'auto';
 
-  addHover('boxInscrever', '#F2F3F7', '#AAAABE');
+  addHover('boxInscrevaSe', '#F2F3F7', '#AAAABE');
   lottiePlayer.setAttribute('data-bs-toggle', '');
   document.querySelector('ul').classList.remove('show');
 }
@@ -72,14 +72,14 @@ function noNotifications() {
   if (currentStateElement.innerText === ANIMATIONS.NO_NOTIFICATIONS) return;
 
   console.log(ANIMATIONS.NO_NOTIFICATIONS);
-  animate(107, 191);
+  animate(176, 252);
 }
 
 function allNotifications() {
   if (currentStateElement.innerText === ANIMATIONS.ALL_NOTIFICATIONS) return;
 
   console.log(ANIMATIONS.ALL_NOTIFICATIONS);
-  animate(192, 276);
+  animate(99, 175);
 }
 
 function customNotifications() {
@@ -89,7 +89,7 @@ function customNotifications() {
   if (isAllowedToChangeState) return
 
   console.log(ANIMATIONS.CUSTOM_NOTIFICATIONS);
-  animate(277, 361);
+  animate(253, 329);
 }
 
 function addDropShadow(id) {
@@ -151,17 +151,17 @@ const frameElement = document.getElementById('frame');
 const stopValueElement = document.getElementById('stopValue');
 const currentStateElement = document.getElementById('currentState');
 
-let subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever');
+let subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrevaSe');
 let subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito');
 
 currentStateElement.innerText = ANIMATIONS.UNSUBSCRIBED;
 
 const stopFrameMapper = {
-  106: ANIMATIONS.SUBSCRIBED,
+  98: ANIMATIONS.SUBSCRIBED,
   21: ANIMATIONS.UNSUBSCRIBED,
-  191: ANIMATIONS.NO_NOTIFICATIONS,
-  276: ANIMATIONS.ALL_NOTIFICATIONS,
-  361: ANIMATIONS.CUSTOM_NOTIFICATIONS,
+  252: ANIMATIONS.NO_NOTIFICATIONS,
+  175: ANIMATIONS.ALL_NOTIFICATIONS,
+  329: ANIMATIONS.CUSTOM_NOTIFICATIONS,
 };
 
 lottiePlayer.shadowRoot.getElementById('animation-container').style.width =
@@ -182,8 +182,8 @@ setTimeout(() => {
 
   lottiePlayer.style.pointerEvents = 'none';
 
-  subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrever');
-  addHover('boxInscrever', '#F2F3F7', '#AAAABE');
+  subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrevaSe');
+  addHover('boxInscrevaSe', '#F2F3F7', '#AAAABE');
   
   subscribeBtn.style.pointerEvents = 'auto';
 }, 400);
