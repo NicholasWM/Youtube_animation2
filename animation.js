@@ -50,7 +50,7 @@ function subscribe() {
   subscribedBtn.addEventListener('keydown', () => console.log('press'))
   subscribedBtn.addEventListener('keyup', () => console.log('unpress'))
   lottiePlayer.setAttribute('data-bs-toggle', 'dropdown');
-  addHover('boxInscrito', '#AAAABE', '#D9D9E1');
+  addHover('boxInscrito', '#AAAABE', '#D1D1DB');
 }
 
 function unsubscribe() {
