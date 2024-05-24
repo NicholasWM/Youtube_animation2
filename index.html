@@ -30,26 +30,26 @@
       id="blueprint-lottie-5"
       style="cursor: pointer; width: 250px;"
       src="https://raw.githubusercontent.com/NicholasWM/lottie-examples/master/botaoInscrito.json"
-      onclick="subscribeIfCurrentStateIsUnsubscribed()"
+      onclick="lottieAnimationInstance.subscribeIfCurrentStateIsUnsubscribed()"
     ></lottie-player>
   
     <ul class="dropdown-menu">
       <li>
-        <a onclick="allNotifications()" class="dropdown-item" href="#">
+        <a onclick="lottieAnimationInstance.allNotifications()" class="dropdown-item" href="#">
           <img src = "./assets/sinoTodas.svg" alt="My Happy SVG"/>
           Todas
         </a>
       </li>
-      <li onclick="customNotifications()">
-        <a onclick="customNotifications()" class="dropdown-item" href="#">
+      <li>
+        <a onclick="lottieAnimationInstance.customNotifications()" class="dropdown-item" href="#">
         <img src = "./assets/sinoPersonalizadas.svg" alt="My Happy SVG"/>
         Personalizadas
       </a></li>
-      <li><a onclick="noNotifications()" class="dropdown-item" href="#">
+      <li><a onclick="lottieAnimationInstance.noNotifications()" class="dropdown-item" href="#">
         <img src = "./assets/sinoNenhuma.svg" alt="My Happy SVG"/>
         Nenhuma
       </a></li>
-      <li><a onclick="unsubscribe()" class="dropdown-item" href="#">
+      <li><a onclick="lottieAnimationInstance.unsubscribe()" class="dropdown-item" href="#">
         <img src = "./assets/cancelarInscricao.svg" alt="My Happy SVG"/>
         Cancelar Inscrição
       </a></li>
