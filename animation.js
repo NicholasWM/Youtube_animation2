@@ -186,7 +186,7 @@ setTimeout(() => {
   addHover('boxInscrevaSe', '#F2F3F7', '#AAAABE');
   
   subscribeBtn.style.pointerEvents = 'auto';
-}, 400);
+}, 600);
 
 
 // Function to convert hex color to RGB object
