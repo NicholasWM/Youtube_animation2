@@ -43,9 +43,10 @@ function subscribe() {
   console.log('subscribe');
   animate(22, 98);
 
+  subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrevaSe');
+  subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito');
   subscribeBtn.style.pointerEvents = 'none';
 
-  subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito');
   subscribedBtn.style.pointerEvents = 'auto';
   // lottiePlayer.setAttribute('data-bs-toggle', 'dropdown');
   addHover('boxInscrito', '#AAAABE', '#D1D1DB');
@@ -54,6 +55,8 @@ function subscribe() {
 function unsubscribe() {
   if (currentStateElement.innerText === 'unsubscribe') return;
 
+  subscribeBtn = lottiePlayer.shadowRoot.getElementById('boxInscrevaSe');
+  subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito');
   console.log('unsubscribe');
   animate(1, 21);
 
@@ -189,7 +192,7 @@ setTimeout(() => {
   addHover('boxInscrevaSe', '#F2F3F7', '#AAAABE');
   
   subscribeBtn.style.pointerEvents = 'auto';
-}, 600);
+}, 300);
 
 // Function to convert hex color to RGB object
 const hexToRGB = (hex) => {
