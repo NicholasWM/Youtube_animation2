@@ -47,9 +47,7 @@ function subscribe() {
 
   subscribedBtn = lottiePlayer.shadowRoot.getElementById('boxInscrito');
   subscribedBtn.style.pointerEvents = 'auto';
-  subscribedBtn.addEventListener('keydown', () => console.log('press'))
-  subscribedBtn.addEventListener('keyup', () => console.log('unpress'))
-  lottiePlayer.setAttribute('data-bs-toggle', 'dropdown');
+  // lottiePlayer.setAttribute('data-bs-toggle', 'dropdown');
   addHover('boxInscrito', '#AAAABE', '#D1D1DB');
 }
 
@@ -105,24 +103,28 @@ function addDropShadow(id) {
 function addClickBackground(id, initialColor, onClickColor) {
   let targetElement = lottiePlayer.shadowRoot.getElementById(id);
   
-  targetElement.addEventListener('mousedown', () => {
-    console.log('Keydown')
+  console.log('targetElement.onmousedown', )
+  console.log('targetElement.onmouseup', )
+  targetElement.onmousedown = () => {
+    if (dropdown.classList.contains('show')) {
+      dropdown.classList.add('hidden')
+      dropdown.classList.remove('show')
+    } else {
+      dropdown.classList.add('show')
+      dropdown.classList.remove('hidden')
+    }
+
     targetElement = lottiePlayer.shadowRoot
       .getElementById(id)
       .querySelector('g')
       .querySelector('path');
     
-    // targetElement.style.fill = onClickColor;
     transitionColors(targetElement, initialColor, onClickColor, 150);
     
-  });
-  targetElement.addEventListener('mouseup', () => {
-    console.log('KeyUp')
-
-    // targetElement.style.fill = initialColor;
+  }
+  targetElement.onmouseup = () => {
     transitionColors(targetElement, onClickColor, initialColor, 150);
-
-  });
+  }
 }
 
 function addHover(id, initialColor, onHoverColor) {
@@ -164,6 +166,7 @@ const stopFrameMapper = {
   329: ANIMATIONS.CUSTOM_NOTIFICATIONS,
 };
 
+
 lottiePlayer.shadowRoot.getElementById('animation-container').style.width =
   '100%';
 
@@ -187,7 +190,6 @@ setTimeout(() => {
   
   subscribeBtn.style.pointerEvents = 'auto';
 }, 600);
-
 
 // Function to convert hex color to RGB object
 const hexToRGB = (hex) => {
@@ -233,4 +235,14 @@ const transitionColors = (element, start, end, duration) => {
           clearInterval(transitionInterval);
       }
   }, interval);
+}
+const dropdown = document.querySelector('.dropdown-menu')
+
+const dropDownWindow = document.body
+window.onclick = function(e){
+  console.log('click', e.target.id?.length, dropdown.classList.contains('show'))
+  if (!e.target.id?.length && dropdown.classList.contains('show')){
+    dropdown.classList.remove('show')
+    dropdown.classList.add('hidden')
+ }
 }
