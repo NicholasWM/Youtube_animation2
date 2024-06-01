@@ -2,6 +2,7 @@ body {
   font-family: 'Adobe Clean UX', sans-serif;
   background-color: red;
   background-color: #1D2C45;
+  overflow: hidden !important;
 }
 
 .btn:hover, .btn:focus-visible, .show:active, .dropdown-item:active {
