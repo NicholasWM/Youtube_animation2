@@ -26,34 +26,36 @@
     <p style="color: white; display: none" id="frame">0</p>
     <p style="color: white; display: none" id="stopValue">0</p>
     
-    <lottie-player
-      id="blueprint-lottie-5"
-      style="cursor: pointer; width: 250px;"
-      src="https://raw.githubusercontent.com/NicholasWM/lottie-examples/master/botaoInscrito.json"
-      onclick="lottieAnimationInstance.subscribeIfCurrentStateIsUnsubscribed()"
-    ></lottie-player>
-  
-    <ul class="dropdown-menu">
-      <li>
-        <a onclick="lottieAnimationInstance.allNotifications()" class="dropdown-item" href="#">
-          <img src = "./assets/sinoTodas.svg" alt="My Happy SVG"/>
-          Todas
-        </a>
-      </li>
-      <li>
-        <a onclick="lottieAnimationInstance.customNotifications()" class="dropdown-item" href="#">
-        <img src = "./assets/sinoPersonalizadas.svg" alt="My Happy SVG"/>
-        Personalizadas
-      </a></li>
-      <li><a onclick="lottieAnimationInstance.noNotifications()" class="dropdown-item" href="#">
-        <img src = "./assets/sinoNenhuma.svg" alt="My Happy SVG"/>
-        Nenhuma
-      </a></li>
-      <li><a onclick="lottieAnimationInstance.unsubscribe()" class="dropdown-item" href="#">
-        <img src = "./assets/cancelarInscricao.svg" alt="My Happy SVG"/>
-        Cancelar Inscrição
-      </a></li>
-    </ul>
+    <div style="border: 1px solid white; height: 400px; display: flex;">
+      <lottie-player
+        id="blueprint-lottie-5"
+        style="cursor: pointer; width: 250px; position: relative; top: -130px; left: calc(50% - 162.8px)"
+        src="https://raw.githubusercontent.com/NicholasWM/lottie-examples/master/botaoInscrito.json"
+        onclick="lottieAnimationInstance.subscribeIfCurrentStateIsUnsubscribed()"
+      ></lottie-player>
+    
+      <ul class="dropdown-menu">
+        <li>
+          <a onclick="lottieAnimationInstance.allNotifications()" class="dropdown-item" href="#">
+            <img src = "./assets/sinoTodas.svg" alt="My Happy SVG"/>
+            Todas
+          </a>
+        </li>
+        <li>
+          <a onclick="lottieAnimationInstance.customNotifications()" class="dropdown-item" href="#">
+          <img src = "./assets/sinoPersonalizadas.svg" alt="My Happy SVG"/>
+          Personalizadas
+        </a></li>
+        <li><a onclick="lottieAnimationInstance.noNotifications()" class="dropdown-item" href="#">
+          <img src = "./assets/sinoNenhuma.svg" alt="My Happy SVG"/>
+          Nenhuma
+        </a></li>
+        <li><a onclick="lottieAnimationInstance.unsubscribe()" class="dropdown-item" href="#">
+          <img src = "./assets/cancelarInscricao.svg" alt="My Happy SVG"/>
+          Cancelar Inscrição
+        </a></li>
+      </ul>
+    </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
 
