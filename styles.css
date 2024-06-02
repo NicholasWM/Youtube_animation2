@@ -1,7 +1,5 @@
 body {
   font-family: 'Adobe Clean UX', sans-serif;
-  background-color: red;
-  background-color: #1D2C45;
   overflow: hidden !important;
 }
 
@@ -69,7 +67,7 @@ ul.dropdown-menu.show {
   opacity: 1;
   position: absolute;
   top: 95px !important;
-  left: calc(50% - 128px) !important;
+  left: calc(50% - 96.8px) !important;
   /* animation-duration: 0.167s; */
   animation: showDropdown 0.167s;
 }
@@ -78,7 +76,7 @@ ul.dropdown-menu.hidden {
   background-color: transparent;
   position: absolute;
   top: 95px !important;
-  left: calc(50% - 128px) !important;
+  left: calc(50% - 96.8) !important;
   animation: hideDropdown 0.167s;
 }
 
