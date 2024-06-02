@@ -76,7 +76,7 @@ ul.dropdown-menu.hidden {
   background-color: transparent;
   position: absolute;
   top: 95px !important;
-  left: calc(50% - 96.8) !important;
+  left: calc(50% - 96.8px) !important;
   animation: hideDropdown 0.167s;
 }
 
